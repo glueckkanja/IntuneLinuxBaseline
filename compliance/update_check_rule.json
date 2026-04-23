@@ -1,0 +1,23 @@
+{
+  "Rules": [
+    {
+      "SettingName": "UpdatesInstalledInLast4Weeks",
+      "Operator": "IsEquals",
+      "DataType": "Boolean",
+      "Operand": true,
+      "MoreInfoUrl": "https://ubuntu.com/tutorials/upgrading-ubuntu-desktop#1-before-you-start",
+      "RemediationStrings": [
+        {
+          "Language": "en_US",
+          "Title": "No Ubuntu package updates were installed in the last 4 weeks.",
+          "Description": "Install Ubuntu updates (for example with Software Updater, apt upgrade, apt full-upgrade, or unattended-upgrades) and then refresh compliance in the Microsoft Intune app."
+        },
+        {
+          "Language": "de_DE",
+          "Title": "In den letzten 4 Wochen wurden keine Ubuntu-Paketupdates installiert.",
+          "Description": "Installieren Sie Ubuntu-Updates (zum Beispiel über Software Updater, apt upgrade, apt full-upgrade oder unattended-upgrades) und aktualisieren Sie danach den Compliance-Status in der Microsoft Intune-App."
+        }
+      ]
+    }
+  ]
+}

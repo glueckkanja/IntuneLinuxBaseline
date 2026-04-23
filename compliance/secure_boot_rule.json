@@ -1,0 +1,23 @@
+{
+  "Rules": [
+    {
+      "SettingName": "SecureBootEnabled",
+      "Operator": "IsEquals",
+      "DataType": "Boolean",
+      "Operand": true,
+      "MoreInfoUrl": "https://documentation.ubuntu.com/security/security-features/platform-protections/secure-boot/",
+      "RemediationStrings": [
+        {
+          "Language": "en_US",
+          "Title": "Secure Boot must be enabled.",
+          "Description": "Enable UEFI Secure Boot in firmware for this Ubuntu device. Your organization requires Secure Boot to be turned on."
+        },
+        {
+          "Language": "de_DE",
+          "Title": "Secure Boot muss aktiviert sein.",
+          "Description": "Aktivieren Sie UEFI Secure Boot in der Firmware dieses Ubuntu-Geräts. Ihre Organisation verlangt, dass Secure Boot eingeschaltet ist."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "Rules": [
+    {
+      "SettingName": "DefenderInstalled",
+      "Operator": "IsEquals",
+      "DataType": "Boolean",
+      "Operand": true,
+      "MoreInfoUrl": "https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-endpoint-linux",
+      "RemediationStrings": [
+        {
+          "Language": "en_US",
+          "Title": "Microsoft Defender for Endpoint must be installed.",
+          "Description": "Install the mdatp package on Ubuntu 24.04 LTS and onboard the device to Microsoft Defender for Endpoint."
+        },
+        {
+          "Language": "de_DE",
+          "Title": "Microsoft Defender for Endpoint muss installiert sein.",
+          "Description": "Installieren Sie das Paket mdatp auf Ubuntu 24.04 LTS und onboarden Sie das Gerät in Microsoft Defender for Endpoint."
+        }
+      ]
+    },
+    {
+      "SettingName": "DefenderRunning",
+      "Operator": "IsEquals",
+      "DataType": "Boolean",
+      "Operand": true,
+      "MoreInfoUrl": "https://learn.microsoft.com/en-us/defender-endpoint/linux-install-manually",
+      "RemediationStrings": [
+        {
+          "Language": "en_US",
+          "Title": "Microsoft Defender for Endpoint service must be running.",
+          "Description": "Start the mdatp service and verify that Defender is operating correctly on the device."
+        },
+        {
+          "Language": "de_DE",
+          "Title": "Der Dienst Microsoft Defender for Endpoint muss ausgeführt werden.",
+          "Description": "Starten Sie den Dienst mdatp und überprüfen Sie, dass Defender auf dem Gerät korrekt ausgeführt wird."
+        }
+      ]
+    },
+    {
+      "SettingName": "DefenderHealthy",
+      "Operator": "IsEquals",
+      "DataType": "Boolean",
+      "Operand": true,
+      "MoreInfoUrl": "https://learn.microsoft.com/en-us/defender-endpoint/linux-install-manually",
+      "RemediationStrings": [
+        {
+          "Language": "en_US",
+          "Title": "Microsoft Defender for Endpoint must report healthy status.",
+          "Description": "Verify onboarding, let initial definition updates finish, and confirm that 'mdatp health --field healthy' returns true."
+        },
+        {
+          "Language": "de_DE",
+          "Title": "Microsoft Defender for Endpoint muss einen fehlerfreien Status melden.",
+          "Description": "Überprüfen Sie das Onboarding, warten Sie den ersten Definitions-Download ab und stellen Sie sicher, dass 'mdatp health --field healthy' den Wert true zurückgibt."
+        }
+      ]
+    }
+  ]
+}

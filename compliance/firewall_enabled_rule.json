@@ -1,0 +1,23 @@
+{
+  "Rules": [
+    {
+      "SettingName": "UfwEnabled",
+      "Operator": "IsEquals",
+      "DataType": "Boolean",
+      "Operand": true,
+      "MoreInfoUrl": "https://help.ubuntu.com/community/UFW",
+      "RemediationStrings": [
+        {
+          "Language": "en_US",
+          "Title": "Ubuntu firewall must be enabled.",
+          "Description": "Enable UFW on this Ubuntu device. Your organization requires the firewall to be active."
+        },
+        {
+          "Language": "de_DE",
+          "Title": "Die Ubuntu-Firewall muss aktiviert sein.",
+          "Description": "Aktivieren Sie UFW auf diesem Ubuntu-Gerät. Ihre Organisation verlangt eine aktive Firewall."
+        }
+      ]
+    }
+  ]
+}
