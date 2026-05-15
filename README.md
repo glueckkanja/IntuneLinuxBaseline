@@ -70,7 +70,7 @@ before the user can enroll their devices to Intune you need to check the followi
 
 5. connect your device to a network connection that can access the internet
 
-![Network Connection](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/04_internet_connection.png)
+![Network Connection](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/04_internet_connection.png)
 
 6. Choose "Install Ubuntu" and choose "Next"
 
