@@ -74,69 +74,69 @@ before the user can enroll their devices to Intune you need to check the followi
 
 6. Choose "Install Ubuntu" and choose "Next"
 
-![Install Ubuntu](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/05_install_or_try.png)
+![Install Ubuntu](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/05_install_or_try.png)
 
 
 
 7. Choose "Automated with autoinstall file"
 
-![Autoinstall](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/06_installation_type.png)
+![Autoinstall](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/06_installation_type.png)
 
 8. import the autoinstall YAML file by using the RAW file URL from Github or the URL to your locally hosted file
 
-![YAML File](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/07_autoinstall_url.png)
+![YAML File](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/07_autoinstall_url.png)
 
 9. After reviewing the imported data choose "install"
 
-![Imported Data](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/09_review_autoinstall.png)
+![Imported Data](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/09_review_autoinstall.png)
 
 10. the installation of Ubuntu and all changes defined in the YAML file will happen in the background. This Process takes 15 -20 minutes. After that the device will reboot.
 
 11. After the instalation has completed and the device has rebooted you need to type the temporary encryption password. in this case "ubuntu". Don't worry this will be changed in a later step.
 
-![Encryption](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/12_disk_passphrase_entry.png)
+![Encryption](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/12_disk_passphrase_entry.png)
 
 12. Afterwards you will be greeted with a welcome screen. please create a username and choose a temporary device name. The device name will be changed in a later step.
 
-![user account](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/14_user_setup.png)
+![user account](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/14_user_setup.png)
 
 13. Choose a password for your device
 
-![Password](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/15_set_password.png)
+![Password](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/15_set_password.png)
 
 14. choose the later personalization settings as needed to reach to the desktop.
 
 15. Afterwards you will recieve a Disk Encryption Popup. Please choose a permanent encryption password and confirm it. Note that the password will be needed at each device boot.
 
-![Encryption Popup](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/22_disk_encryption_setup.png)
+![Encryption Popup](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/22_disk_encryption_setup.png)
 
-![encryption pass](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/23_set_encryption_password.png)
+![encryption pass](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/23_set_encryption_password.png)
 
-![Encryption confirm](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/24_confirm_encryption_password.png)
+![Encryption confirm](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/24_confirm_encryption_password.png)
 
 ![Encryption success](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/25_encryption_password_set.png)
 
 16. after this the Intune App will start automatically. the user needs to sign in and enroll their device to Intune
 
-![Intune start](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/26_intune_agent.png)
+![Intune start](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/26_intune_agent.png)
 
-![sign in](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/27_microsoft_signin.png)
+![sign in](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/27_microsoft_signin.png)
 
-![MS password](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/28_microsoft_password.png)
+![MS password](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/28_microsoft_password.png)
 
-![register](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/29_device_registration.png)
+![register](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/29_device_registration.png)
 
-![Begin](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/30_intune_setup_access.png)
+![Begin](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/30_intune_setup_access.png)
 
-![Enroll](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/31_intune_org_permissions.png)
+![Enroll](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/31_intune_org_permissions.png)
 
 type the device password as this is needed for some policies that run in root context to take effect.
 
-![root permissions](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/32_auth_required.png)
+![root permissions](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/32_auth_required.png)
 
 17. your device is now enrolled to Intune and compliant and can access company data using Microsoft Edge.
 
-![compliant device](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/33_device_compliant.png)
+![compliant device](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/33_device_compliant.png)
 
 ## Contributing
 Contributions are what make this project useful for the whole community. All skill levels are welcome!
