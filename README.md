@@ -114,7 +114,7 @@ before the user can enroll their devices to Intune you need to check the followi
 
 ![Encryption confirm](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/24_confirm_encryption_password.png)
 
-![Encryption success](https://raw.githubusercontent.com/glueckkanja/IntuneLinuxBaseline/refs/heads/main/pictures/25_encryption_password_set.png)
+![Encryption success](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/25_encryption_password_set.png)
 
 16. after this the Intune App will start automatically. the user needs to sign in and enroll their device to Intune
 
@@ -137,6 +137,38 @@ type the device password as this is needed for some policies that run in root co
 17. your device is now enrolled to Intune and compliant and can access company data using Microsoft Edge.
 
 ![compliant device](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/pictures/33_device_compliant.png)
+
+## Compliance
+Compliance policies in Intune are used to define the rules and settings a device must meet to be considered "compliant".
+
+Intune evaluates each device against these rules and reports its compliance state, which can then be used with Conditional Access in Entra ID to allow or block access to company resources based on whether the device is compliant.
+
+As Intune doesn't provide much built in policies for Linux, we will mainly be using custom compliance policies.
+
+Custom compliance for Linux in Intune lets you evaluate device settings that aren't covered by Intune's built-in compliance rules. It consists of two parts that work together:
+
+- A discovery script (Bash) – runs on the Linux device, collects the settings you want to check and returns the results as a JSON object.
+
+- A JSON rules file – uploaded in the Intune admin center, defining the expected values, operators and remediation messages shown to the user if a rule fails.
+
+Intune runs the script on the device, compares the returned JSON against the rules file, and marks the device compliant or non-compliant. The result feeds into Conditional Access just like built-in compliance settings.
+
+for Linux we check for the following settings:
+
+| Policy | Description | Discovery script | Rules file |
+|----------|----------|----------|----------|
+| Linux - Default - Defender Health | verifies that Microsoft Defender is installed, running and have a healthy state | [Defender_health_discovery.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/compliance/defender_health_discovery.sh)  | [defender_health_rule.json](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/compliance/defender_health_rule.json)  |
+| Linux - Default - Firewall | verifies that UFW is enabled and all inbound traffic is not allowed  | [firewall_enabled_discovery.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/compliance/firewall_enabled_discovery.sh)  | [firewall_enabled_rule.json](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/compliance/firewall_enabled_rule.json)  |
+| 
+Linux - Default - Secure Boot  | verifies that secure boot is enabled  | [secure_boot_discovery.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/compliance/secure_boot_discovery.sh)  | [secure_boot_rule.json](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/compliance/secure_boot_rule.json)  |
+| Linux - Default - Package Updates  | verifies that the package updates has been installed in the last 28 Days | [update_check_discovery.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/compliance/update_check_discovery.sh) | [update_check_rule.json](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/compliance/update_check_rule.json)  |
+| Linux - Default - Encryption  | verifies that the device's system disk is encrypted using LUKS  | built-in policy  | built-in policy  |
+| Linux - Default - Allowed Distributions  | verifies that only supported Distributions are installed on the targeted devices | built-in policy  | built-in policy  |
+| Linux - Default - Password  | verifies that passwords fulfilling certain criterias are used for the local account on the device | built-in policy  | built-in policy  |
+
+
+
+
 
 ## Contributing
 Contributions are what make this project useful for the whole community. All skill levels are welcome!
