@@ -18,6 +18,7 @@ A baseline for managing Linux devices with Microsoft Intune.
 - [Overview](#overview)
 - [What's Included](#whats-included)
 - [Supported Distributions](#supported-distributions)
+- [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
 - [Basic concept](#basic-concept)
 - [Enrollment](#enrollment)
@@ -43,16 +44,19 @@ Mainly aimed at Ubuntu but working with other supported distributions, this base
 - Ubuntu 24.04 LTS and 26.04 LTS
 - Red Hat Enterprise Linux 9/10 (some adjustments might be needed)
 
-## Getting Started
-
-This baseline is modular — you can adopt all of it or just the parts you need. The sections below go into detail on each component; this is the recommended order to put them in place. Do the Intune setup first so the policies and scripts are ready before any device enrolls.
-
-### 1. Check the prerequisites
+## Prerequisites
 Before you start, make sure the basics are in place:
 - The user has an **Intune license**
 - **Users may join devices to Microsoft Entra** is enabled for the users who will enroll
 - If you use a Conditional Access policy that requires compliant devices, **exclude Microsoft Intune and Microsoft Intune Enrollment** so the first enrollment isn't blocked
 - The device runs a **supported OS** (see [Supported Distributions](#supported-distributions))
+
+## Getting Started
+
+This baseline is modular — you can adopt all of it or just the parts you need. The sections below go into detail on each component; this is the recommended order to put them in place. Do the Intune setup first so the policies and scripts are ready before any device enrolls.
+
+### 1. Check the prerequisites
+Make sure everything in the [Prerequisites](#prerequisites) section is in place before you begin.
 
 ### 2. Deploy the compliance policies
 In the Intune admin center, upload the discovery scripts and their matching rules files from [compliance/](compliance/), then create the custom compliance policies. Tie these to Conditional Access so only compliant devices reach company resources. See the [Compliance](#compliance) section for what each policy checks.
