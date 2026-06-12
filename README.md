@@ -8,6 +8,10 @@
 
 A baseline for managing Linux devices with Microsoft Intune.
 
+[![License: MIT](https://img.shields.io/github/license/glueckkanja/IntuneLinuxBaseline)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/glueckkanja/IntuneLinuxBaseline)](https://github.com/glueckkanja/IntuneLinuxBaseline/commits)
+[![Issues](https://img.shields.io/github/issues/glueckkanja/IntuneLinuxBaseline)](https://github.com/glueckkanja/IntuneLinuxBaseline/issues)
+
 </div>
 
 ## Table of Contents
@@ -21,6 +25,7 @@ A baseline for managing Linux devices with Microsoft Intune.
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 - [Disclaimer](#disclaimer)
+- [License](#license)
 
 ## Overview
 The IntuneLinuxBaseline is a collection of security and compliance configurations for Linux devices managed through Microsoft Intune. It provides policy definitions, custom compliance scripts, and configuration scripts that help organisations establish a consistent, secure Linux endpoint posture without starting from scratch.
@@ -169,4 +174,8 @@ Ways to contribute:
 ## Disclaimer
 
 These baselines are provided as-is and represent community recommendations. They are not official Microsoft guidance. Always review and test policies in a non-production environment before deploying to your organisation. The maintainers are not responsible for any unintended impacts to your environment.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
