@@ -149,14 +149,14 @@ For Linux we apply the following configurations:
 
 | Configuration | Description | Script |
 |----------|----------|----------|
-| Disable Telemetry | opts out of ubuntu-report, disables Whoopsie crash and metrics reporting, and stops the whoopsie service | [disable_telemetry.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/disable_telemetry.sh) |
-| Default Browser | sets Microsoft Edge as the default web browser and registers it as the handler for http, https and HTML files | [edge_default_browser.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/edge_default_browser.sh) |
-| Managed Favorites | deploys a managed favorites list with predefined websites and enables the favorites bar in Microsoft Edge | [edge_managed_favorites.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/edge_managed_favorites.sh) |
-| Enable Firewall | sets secure default UFW rules (deny incoming, allow outgoing) and enables the firewall | [enable_firewall.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/enable_firewall.sh) |
-| Intune Sync | creates a helper script for the Intune agent and schedules it as a cron job so the device checks in regularly | [enable_intune_sync.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/enable_intune_sync.sh) |
-| Package Updates | updates the package lists, installs available APT and Snap upgrades, and removes packages that are no longer needed | [package_updates.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/package_updates.sh) |
-| Screen Lock | enforces a 5 minute idle screen lock through dconf and locks the values so users cannot change them | [screen_lock_idle.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/screen_lock_idle.sh) |
-| Device Name | builds a hostname from the device serial number and applies it across the system hostname files | [set_device_name.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/set_device_name.sh) |
+| Disable Telemetry | opts out of ubuntu-report, disables Whoopsie crash and metrics reporting, and stops the whoopsie service | [disable_telemetry.sh](configuration/disable_telemetry.sh) |
+| Default Browser | sets Microsoft Edge as the default web browser and registers it as the handler for http, https and HTML files | [edge_default_browser.sh](configuration/edge_default_browser.sh) |
+| Managed Favorites | deploys a managed favorites list with predefined websites and enables the favorites bar in Microsoft Edge | [edge_managed_favorites.sh](configuration/edge_managed_favorites.sh) |
+| Enable Firewall | sets secure default UFW rules (deny incoming, allow outgoing) and enables the firewall | [enable_firewall.sh](configuration/enable_firewall.sh) |
+| Intune Sync | creates a helper script for the Intune agent and schedules it as a cron job so the device checks in regularly | [enable_intune_sync.sh](configuration/enable_intune_sync.sh) |
+| Package Updates | updates the package lists, installs available APT and Snap upgrades, and removes packages that are no longer needed | [package_updates.sh](configuration/package_updates.sh) |
+| Screen Lock | enforces a 5 minute idle screen lock through dconf and locks the values so users cannot change them | [screen_lock_idle.sh](configuration/screen_lock_idle.sh) |
+| Device Name | builds a hostname from the device serial number and applies it across the system hostname files | [set_device_name.sh](configuration/set_device_name.sh) |
 
 
 
