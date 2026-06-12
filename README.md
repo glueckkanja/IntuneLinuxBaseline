@@ -97,7 +97,7 @@ The feature allows using a YAML file to achieve the following requirements:
 - Installs the needed Microsoft packages (Microsoft Edge and the Intune Portal app)
 - Prompts the user to change the encryption password after the first sign-in
 
-Check the YAML file in [enrollment/](enrollment/).
+➡️ Check the YAML file in [enrollment/](enrollment/).
 
 
 
@@ -181,5 +181,7 @@ These baselines are provided as-is and represent community recommendations. They
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
+
+➡️ See the [LICENSE](LICENSE) file for details.
 
