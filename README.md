@@ -88,20 +88,9 @@ The feature allows using a YAML file to achieve the following requirements:
 - installs needed Microsoft Packages. (Microsoft Edge and Intune Portal App)
 - prompt user to change the encryption password after the first sign-in
 
-Check the YAML file and documentation and use with caution ->
+Check the YAML file [enrollment](enrollment/)
 
-### Enrollment to Intune
 
-before the user can enroll their devices to Intune you need to check the following things:
-- Licensing: The user has an Intune license
-- Entra-Join: make sure the Entra setting "Users may join devices to Microsoft Entra" is set to all or the users that needs to enroll are allowed.
-- Conditional Access: If you're using a Conditional Access policy that only allows compliant devices then you need to exclude these resources :
-	- Microsoft Intune 
-	- Microsoft Intune Enrollment
-	otherwise you will not be able to enroll devices as those are not compliant before the enrollment and there is no bypassing mechanism for the enrollment such as for Windows devices
-- Operating System: Use a supported OS version. At the i'm writing this it's:
-	- Ubuntu 24.04 LTS or Ubuntu 26.04 LTS
-	- Red Hat Enterprise Linux (RHEL) 9 or 10
 
 ### Installation Process
 1. Flash Ubuntu on an external USB Stick and boot your device from it.
