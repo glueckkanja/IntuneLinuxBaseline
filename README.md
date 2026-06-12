@@ -35,9 +35,9 @@ Mainly aimed at Ubuntu but working with other supported distributions, this base
 ## What's Included
 | Category | Description |
 |---|---|
-| **Enrollment** | an autoinstall enrollment experience for a faster and standarized setup |
-| **Compliance** | policy definitions covering OS, password, encryption, and firewall checks ...etc. |
-| **Configuration** | configuration scripts for common Linux hardening settings and customization |
+| **Enrollment** | An autoinstall enrollment experience for a faster, standardized setup |
+| **Compliance** | Policy definitions covering OS, password, encryption, firewall checks, and more |
+| **Configuration** | Configuration scripts for common Linux hardening settings and customization |
 
 ## Supported Distributions
 - Ubuntu 24.04 LTS and 26.04 LTS
@@ -45,7 +45,7 @@ Mainly aimed at Ubuntu but working with other supported distributions, this base
 
 ## Getting Started
 
-This baseline is modular, you can adopt all of it or just the parts you need. The sections below go into detail on each component; this is the recommended order to put them in place. Do the Intune setup first so the policies and scripts are ready before any device enrolls.
+This baseline is modular — you can adopt all of it or just the parts you need. The sections below go into detail on each component; this is the recommended order to put them in place. Do the Intune setup first so the policies and scripts are ready before any device enrolls.
 
 ### 1. Check the prerequisites
 Before you start, make sure the basics are in place:
@@ -67,33 +67,33 @@ Use the autoinstall file in [enrollment/](enrollment/) to flash and install the 
 After installation the Intune Portal app launches automatically. The user signs in and registers the device. Because the policies and scripts are already in place, the device picks them up and starts converging to the baseline right after enrollment. See the [Enrollment](#enrollment) section for the sign-in steps.
 
 ## Basic concept
-there are basic things that need to exist when talking about modern managing devices from any platform, which are:
+There are some basic things that need to exist when managing modern devices on any platform:
 
-- A scalable and user driven enrollment with minimal effort
+- A scalable, user-driven enrollment with minimal effort
 - A set of security policies to reduce exposed weaknesses
-- A compliance status of the device that only allow access through conditional access if device is compliant
+- A compliance status for the device that only allows access through Conditional Access if the device is compliant
 - Some settings that make the work experience more convenient
 - Some basic device information in Intune
 
 ## Enrollment
 ### OS preparation
-Intune offers no native method to prepare devices before the user signs in. there is no Autopilot such as for Windows. No sync to external MDM such as for Apple Business and no method to customize the installation. It's expected that a user goes through a manual installation process before reaching their desktop and go through the enrollment into Intune.
+Intune offers no native method to prepare devices before the user signs in. There is no Autopilot as there is for Windows, no sync to an external MDM as there is for Apple Business, and no method to customize the installation. A user is expected to go through a manual installation process before reaching their desktop and enrolling into Intune.
 
-For that we utilized the native Ubuntu "Automated Installation" Feature and added some additional features for it for a smooth installation process.
+For that we use the native Ubuntu "Automated Installation" feature and added some extra steps to it for a smooth installation process.
 
 The feature allows using a YAML file to achieve the following requirements:
 
- initialize a user account
-- Uses LVM layout with full-disk LUKS encryption and set a temporary password
-- install basic packages
-- install basic Snap packages
-- run security updates
-- Disable telemetry
+- Initializes a user account
+- Uses an LVM layout with full-disk LUKS encryption and sets a temporary password
+- Installs basic packages
+- Installs basic Snap packages
+- Runs security updates
+- Disables telemetry
 - Removes LibreOffice, Remmina, and Transmission
-- installs needed Microsoft Packages. (Microsoft Edge and Intune Portal App)
-- prompt user to change the encryption password after the first sign-in
+- Installs the needed Microsoft packages (Microsoft Edge and the Intune Portal app)
+- Prompts the user to change the encryption password after the first sign-in
 
-Check the YAML file [enrollment](enrollment/)
+Check the YAML file in [enrollment/](enrollment/).
 
 
 
@@ -107,7 +107,7 @@ Compliance policies in Intune are used to define the rules and settings a device
 
 Intune evaluates each device against these rules and reports its compliance state, which can then be used with Conditional Access in Entra ID to allow or block access to company resources based on whether the device is compliant.
 
-As Intune doesn't provide much built in policies for Linux, we will mainly be using custom compliance policies.
+As Intune doesn't provide many built-in policies for Linux, we will mainly be using custom compliance policies.
 
 Custom compliance for Linux in Intune lets you evaluate device settings that aren't covered by Intune's built-in compliance rules. It consists of two parts that work together:
 
@@ -117,17 +117,17 @@ Custom compliance for Linux in Intune lets you evaluate device settings that are
 
 Intune runs the script on the device, compares the returned JSON against the rules file, and marks the device compliant or non-compliant. The result feeds into Conditional Access just like built-in compliance settings.
 
-for Linux we check for the following settings:
+For Linux we check the following settings:
 
 | Policy | Description | Discovery script | Rules file |
 |----------|----------|----------|----------|
-| Linux - Default - Defender Health | verifies that Microsoft Defender is installed, running and have a healthy state | [Defender_health_discovery.sh](compliance/defender_health_discovery.sh)  | [defender_health_rule.json](compliance/defender_health_rule.json)  |
+| Linux - Default - Defender Health | verifies that Microsoft Defender is installed, running, and in a healthy state | [defender_health_discovery.sh](compliance/defender_health_discovery.sh)  | [defender_health_rule.json](compliance/defender_health_rule.json)  |
 | Linux - Default - Firewall | verifies that UFW is enabled and all inbound traffic is not allowed  | [firewall_enabled_discovery.sh](compliance/firewall_enabled_discovery.sh)  | [firewall_enabled_rule.json](compliance/firewall_enabled_rule.json)  |
 | Linux - Default - Secure Boot  | verifies that secure boot is enabled  | [secure_boot_discovery.sh](compliance/secure_boot_discovery.sh)  | [secure_boot_rule.json](compliance/secure_boot_rule.json)  |
-| Linux - Default - Package Updates  | verifies that the package updates has been installed in the last 28 Days | [update_check_discovery.sh](compliance/update_check_discovery.sh) | [update_check_rule.json](compliance/update_check_rule.json)  |
+| Linux - Default - Package Updates  | verifies that package updates have been installed in the last 28 days | [update_check_discovery.sh](compliance/update_check_discovery.sh) | [update_check_rule.json](compliance/update_check_rule.json)  |
 | Linux - Default - Encryption  | verifies that the device's system disk is encrypted using LUKS  | built-in policy  | built-in policy  |
-| Linux - Default - Allowed Distributions  | verifies that only supported Distributions are installed on the targeted devices | built-in policy  | built-in policy  |
-| Linux - Default - Password  | verifies that passwords fulfilling certain criterias are used for the local account on the device | built-in policy  | built-in policy  |
+| Linux - Default - Allowed Distributions  | verifies that only supported distributions are installed on the targeted devices | built-in policy  | built-in policy  |
+| Linux - Default - Password  | verifies that passwords meeting certain criteria are used for the local account on the device | built-in policy  | built-in policy  |
 
 
 ## Configuration
@@ -139,13 +139,13 @@ A platform script in Intune is a Bash script that:
 
 - runs in an execution context you choose when creating the policy, either User or Root
 
-- runs on a recurring schedule defined in Intune, which makes the configuration self-healing. if a setting drifts or a user reverts it, the next run puts it back
+- runs on a recurring schedule defined in Intune, which makes the configuration self-healing. If a setting drifts or a user reverts it, the next run puts it back
 
 - reports a basic success or failure state back to Intune based on the script's exit code
 
 Because the scripts run repeatedly, they are written to be idempotent. Each one checks the current state first and only makes a change when the device isn't already in the desired state, so re-runs are safe and don't produce noise.
 
-for Linux we apply the following configurations:
+For Linux we apply the following configurations:
 
 | Configuration | Description | Script |
 |----------|----------|----------|
