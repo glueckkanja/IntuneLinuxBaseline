@@ -1,5 +1,14 @@
+<div align="center">
+
+<img src="pictures/banner.png" alt="Intune X Linux" width="800">
+
 # IntuneLinuxBaseline
+
+**Manage. Secure. Empower.**
+
 A baseline for managing Linux devices with Microsoft Intune.
+
+</div>
 
 ## Overview
 The IntuneLinuxBaseline is a collection of security and compliance configurations for Linux devices managed through Microsoft Intune. It provides policy definitions, custom compliance scripts, and configuration scripts that help organisations establish a consistent, secure Linux endpoint posture without starting from scratch.
@@ -16,6 +25,29 @@ Mainly aimed at Ubuntu but working with other supported distributions, this base
 ## Supported Distributions
 - Ubuntu 24.04 LTS and 26.04 LTS
 - Red Hat Enterprise Linux 9/10 (some adjustments might be needed)
+
+## Getting Started
+
+This baseline is modular, you can adopt all of it or just the parts you need. The sections below go into detail on each component; this is the recommended order to put them in place. Do the Intune setup first so the policies and scripts are ready before any device enrolls.
+
+### 1. Check the prerequisites
+Before you start, make sure the basics are in place:
+- The user has an **Intune license**
+- **Users may join devices to Microsoft Entra** is enabled for the users who will enroll
+- If you use a Conditional Access policy that requires compliant devices, **exclude Microsoft Intune and Microsoft Intune Enrollment** so the first enrollment isn't blocked
+- The device runs a **supported OS** (see [Supported Distributions](#supported-distributions))
+
+### 2. Deploy the compliance policies
+In the Intune admin center, upload the discovery scripts and their matching rules files from [compliance/](compliance/), then create the custom compliance policies. Tie these to Conditional Access so only compliant devices reach company resources. See the [Compliance](#compliance) section for what each policy checks.
+
+### 3. Deploy the configuration scripts
+Upload the Bash scripts from [configuration/](configuration/) as platform scripts and assign them to your devices. These apply the hardening and convenience settings and re-apply them on every run, so the device stays in the desired state. See the [Configuration](#configuration) section for what each script does.
+
+### 4. Prepare and install the OS
+Use the autoinstall file in [enrollment/](enrollment/) to flash and install the device in a standardized way. This handles disk encryption, base packages, the Microsoft apps and more before the user ever reaches the desktop. See the [Enrollment](#enrollment) section for the full walkthrough.
+
+### 5. Enroll the device into Intune
+After installation the Intune Portal app launches automatically. The user signs in and registers the device. Because the policies and scripts are already in place, the device picks them up and starts converging to the baseline right after enrollment. See the [Enrollment](#enrollment) section for the sign-in steps.
 
 ## Basic concept
 there are basic things that need to exist when talking about modern managing devices from any platform, which are:
@@ -164,6 +196,35 @@ for Linux we check for the following settings:
 | Linux - Default - Encryption  | verifies that the device's system disk is encrypted using LUKS  | built-in policy  | built-in policy  |
 | Linux - Default - Allowed Distributions  | verifies that only supported Distributions are installed on the targeted devices | built-in policy  | built-in policy  |
 | Linux - Default - Password  | verifies that passwords fulfilling certain criterias are used for the local account on the device | built-in policy  | built-in policy  |
+
+
+## Configuration
+Where compliance policies only report whether a device meets the rules, configuration is what actually applies the settings to the device. This is where we harden the system and add the convenience tweaks that make the device ready to use.
+
+Intune offers no settings catalog or configuration profiles for Linux the way it does for Windows, macOS, iOS or Android. The only mechanism Intune provides to push settings to a Linux device is custom scripts, called platform scripts (also called custom scripts/shell scripts in the admin center). For that reason every configuration in this baseline is delivered as a Bash script.
+
+A platform script in Intune is a Bash script that:
+
+- runs in an execution context you choose when creating the policy, either User or Root
+
+- runs on a recurring schedule defined in Intune, which makes the configuration self-healing. if a setting drifts or a user reverts it, the next run puts it back
+
+- reports a basic success or failure state back to Intune based on the script's exit code
+
+Because the scripts run repeatedly, they are written to be idempotent. Each one checks the current state first and only makes a change when the device isn't already in the desired state, so re-runs are safe and don't produce noise.
+
+for Linux we apply the following configurations:
+
+| Configuration | Description | Script |
+|----------|----------|----------|
+| Disable Telemetry | opts out of ubuntu-report, disables Whoopsie crash and metrics reporting, and stops the whoopsie service | [disable_telemetry.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/disable_telemetry.sh) |
+| Default Browser | sets Microsoft Edge as the default web browser and registers it as the handler for http, https and HTML files | [edge_default_browser.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/edge_default_browser.sh) |
+| Managed Favorites | deploys a managed favorites list with predefined websites and enables the favorites bar in Microsoft Edge | [edge_managed_favorites.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/edge_managed_favorites.sh) |
+| Enable Firewall | sets secure default UFW rules (deny incoming, allow outgoing) and enables the firewall | [enable_firewall.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/enable_firewall.sh) |
+| Intune Sync | creates a helper script for the Intune agent and schedules it as a cron job so the device checks in regularly | [enable_intune_sync.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/enable_intune_sync.sh) |
+| Package Updates | updates the package lists, installs available APT and Snap upgrades, and removes packages that are no longer needed | [package_updates.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/package_updates.sh) |
+| Screen Lock | enforces a 5 minute idle screen lock through dconf and locks the values so users cannot change them | [screen_lock_idle.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/screen_lock_idle.sh) |
+| Device Name | builds a hostname from the device serial number and applies it across the system hostname files | [set_device_name.sh](https://github.com/glueckkanja/IntuneLinuxBaseline/blob/main/configuration/set_device_name.sh) |
 
 
 
