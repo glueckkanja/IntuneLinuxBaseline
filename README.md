@@ -10,6 +10,18 @@ A baseline for managing Linux devices with Microsoft Intune.
 
 </div>
 
+## Table of Contents
+- [Overview](#overview)
+- [What's Included](#whats-included)
+- [Supported Distributions](#supported-distributions)
+- [Getting Started](#getting-started)
+- [Basic concept](#basic-concept)
+- [Enrollment](#enrollment)
+- [Compliance](#compliance)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [Disclaimer](#disclaimer)
+
 ## Overview
 The IntuneLinuxBaseline is a collection of security and compliance configurations for Linux devices managed through Microsoft Intune. It provides policy definitions, custom compliance scripts, and configuration scripts that help organisations establish a consistent, secure Linux endpoint posture without starting from scratch.
 
