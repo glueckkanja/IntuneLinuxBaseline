@@ -41,8 +41,10 @@ Mainly aimed at Ubuntu but working with other supported distributions, this base
 | **Configuration** | Configuration scripts for common Linux hardening settings and customization |
 
 ## Supported Distributions
-- Ubuntu 24.04 LTS and 26.04 LTS
-- Red Hat Enterprise Linux 9/10 (some adjustments might be needed)
+- Ubuntu 24.04 LTS
+
+> [!NOTE]
+> Other distributions might work as well, but may require some adjustments.
 
 ## Prerequisites
 Before you start, make sure the basics are in place:
